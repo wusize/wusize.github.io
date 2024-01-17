@@ -18,6 +18,8 @@ Reviewer for: TPAMI, IJCV, TIP, CVIU and CVPR.
 
 Recent News
 ------------------------
+1 [paper](https://arxiv.org/abs/2310.01403) is accepted by ICLR2024 for spotlight presentation (top 5%). (Jan. 2024)
+
 1 [paper](https://arxiv.org/pdf/2312.11376.pdf) is accepted by AAAI2024. (Dec. 2023)
 
 I am awarded [AISG PhD Fellowship](https://aisingapore.org/research/phd-fellowship-programme/). (Jun. 2023)
