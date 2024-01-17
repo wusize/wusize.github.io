@@ -11,7 +11,7 @@ paperurl: https://arxiv.org/abs/2310.01403
 # projecturl: https://www.mmlab-ntu.com/project/baron/index.html
 # posterlink: /files/mmMOT_poster_final.pdf
 additional: true
-# highlight: 'New state of the art on Open-vocabulary COCO/LVIS Benchmark.'
+highlight: 'Spotlight (top 5%)'
 
 # venue: 'Journal 1'
 # paperurl: 'https://dl.acm.org/citation.cfm?id=3240553'
