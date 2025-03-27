@@ -3,23 +3,337 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harmon: Unified Multimodal Understanding and Generation</title>
+  <title>Harmonizing Visual Representations for Unified Multimodal Understanding and Generation</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Harmon: Unified Multimodal Understanding and Generation</h1>
-  <p><strong>Authors:</strong> Your name, Co-authors</p>
+  <h1>Harmonizing Visual Representations for Unified Multimodal Understanding and Generation</h1>
+  <div class="authors" style="text-align: center; margin: 20px 0;">
+    <div class="author-names" style="margin-bottom: 15px; font-size: 1.1em;">
+      <a href="mailto:size001@e.ntu.edu.sg" style="text-decoration: none; color: #4169E1;">Size Wu</a><sup>1</sup>, 
+      <span>Wenwei Zhang</span><sup>2</sup>, 
+      <span>Lumin Xu</span><sup>3</sup>, 
+      <span>Sheng Jin</span><sup>4</sup>, 
+      <span>Zhonghua Wu</span><sup>5</sup><br>
+      <span>Qingyi Tao</span><sup>5</sup>, 
+      <span>Wentao Liu</span><sup>4</sup>, 
+      <span>Wei Li</span><sup>1</sup>, 
+      <a href="mailto:ccloy@ntu.edu.sg" style="text-decoration: none; color: #4169E1;">Chen Change Loy</a><sup>1</sup>
+    </div>
+    <div class="affiliations" style="color: #666; font-size: 0.9em; line-height: 1.4;">
+      <div><sup>1</sup>S-Lab, Nanyang Technological University &nbsp;&nbsp;&nbsp; <sup>2</sup>Shanghai AI Laboratory Research &nbsp;&nbsp;&nbsp; <sup>3</sup>The Chinese University of Hong Kong</div>
+      <div><sup>4</sup>SenseTime Research and Tetras.AI &nbsp;&nbsp;&nbsp; <sup>5</sup>SenseTime Research</div>
+    </div>
+  </div>
+  <div class="widgets" style="text-align: center; margin: 30px 0; display: flex; justify-content: center; align-items: center;">
+    <a href="https://arxiv.org/abs/2503.xxxx" target="_blank" style="text-decoration: none; margin: 0 10px;">
+      <img src="https://img.shields.io/badge/arXiv-2503.xxxxx-b31b1b.svg" alt="arXiv">
+    </a>
+    <a href="https://github.com/wusize/Harmon" target="_blank" style="text-decoration: none; margin: 0 10px;">
+      <img src="https://img.shields.io/badge/github-%23121011.svg?&logo=github&logoColor=white" alt="GitHub">
+    </a>
+    <a href="https://huggingface.co/wusize/harmon" target="_blank" style="text-decoration: none; margin: 0 10px;">
+      <img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-blue" alt="HuggingFace">
+    </a>
+  </div>
 
-  <img src="assets/teaser.png" alt="Harmon Teaser" width="600px">
+  <img src="assets/teaser.png" alt="Harmon Teaser Figure 1" width="800px">
+  <p style="text-align: center;"><small>Figure 1: An overview of image generation and understanding examples. All results are obtained by the proposed Harmon-1.5B, which uses a shared visual encoder for both tasks.</small></p>
 
   <h2>Abstract</h2>
-  <p>Your abstract here...</p>
+    <p style="text-align: justify;">
+    Unifying visual understanding and generation within a single multimodal framework remains a significant challenge,
+    as the two inherently heterogeneous tasks require representations at different levels of granularity. Current
+    approaches that utilize vector quantization (VQ) or variational autoencoders (VAE) for unified visual representation
+    prioritize intrinsic imagery features over semantics, compromising understanding performance. In this work, we take
+    inspiration from masked image modelling (MIM) that learns rich semantics via a mask-and-reconstruct pre-training
+    and its successful extension to masked autoregressive (MAR) image generation. And we present <b style="color: #4169E1;">Harmon</b>, a unified
+    autoregressive framework that harmonizes understanding and generation tasks with a shared MAR encoder. Through a
+    three-stage training procedure that progressively optimizes understanding and generation capabilities, <b style="color: #4169E1;">Harmon</b>
+    achieves state-of-the-art image generation results on text-to-image generation benchmarks while matching the
+    performance of methods with dedicated semantic encoders (e.g., Janus) on image understanding benchmarks.
+    </p>
 
-  <h2>Paper & Resources</h2>
-  <ul>
-    <li><a href="assets/harmon-paper.pdf">📄 Paper (PDF)</a></li>
-    <li><a href="https://github.com/wusize/Harmon">💻 Code Repository</a></li>
-  </ul>
+
+    <h2>Method</h2>
+    <img src="assets/method.png" alt="Harmon Teaser Figure 1" width="800px">
+    <p style="text-align: center;"><small>Figure 2: The overall framework of <b style="color: #4169E1;">Harmon</b>. (a) Image generation is performed in the masked autoregressive manner. (b) image understanding is formulated as image-conditioned text autoregression. The MAR encoder is shared by both tasks..</small></p>
+  
+    <h2>Benchmark Results</h2>
+    <p style="text-align: center; margin-bottom: 1px;"><small>Table 1: Comparison with state-of-the-art models on multimodal question-answering benchmarks. 
+        Best and second best results are marked in <b>bold</b> and <u>underlined</u> respectively. † means employing a separate semantic encoder.</small></p>
+    <div style="overflow-x: auto;">
+      <table style="margin: 1px auto; border-collapse: collapse; text-align: center;">
+        <tr style="border-bottom: 2px solid black;">
+          <th style="padding: 8px;">Model</th>
+          <th style="padding: 8px;">LLM Scale</th>
+          <th style="padding: 8px;">POPE↑</th>
+          <th style="padding: 8px;">MME-P↑</th>
+          <th style="padding: 8px;">MME-C↑</th>
+          <th style="padding: 8px;">MMB↑</th>
+          <th style="padding: 8px;">SEED↑</th>
+          <th style="padding: 8px;">GQA↑</th>
+          <th style="padding: 8px;">MMMU↑</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">ILLUME</td>
+          <td style="padding: 8px;">7B</td>
+          <td style="padding: 8px;">88.5</td>
+          <td style="padding: 8px;">1445</td>
+          <td style="padding: 8px;">-</td>
+          <td style="padding: 8px;">65.1</td>
+          <td style="padding: 8px;">72.9</td>
+          <td style="padding: 8px;">-</td>
+          <td style="padding: 8px;">38.2</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">VILA-U</td>
+          <td style="padding: 8px;">7B</td>
+          <td style="padding: 8px;">85.8</td>
+          <td style="padding: 8px;">1402</td>
+          <td style="padding: 8px;">-</td>
+          <td style="padding: 8px;">-</td>
+          <td style="padding: 8px;">59.0</td>
+          <td style="padding: 8px;">60.8</td>
+          <td style="padding: 8px;">-</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Show-o</td>
+          <td style="padding: 8px;">1.3B</td>
+          <td style="padding: 8px;">80.0</td>
+          <td style="padding: 8px;">1097</td>
+          <td style="padding: 8px;">248</td>
+          <td style="padding: 8px;">51.6</td>
+          <td style="padding: 8px;">54.4</td>
+          <td style="padding: 8px;">58.0</td>
+          <td style="padding: 8px;">26.7</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Janus†</td>
+          <td style="padding: 8px;">1.3B</td>
+          <td style="padding: 8px;"><u>87.0</u></td>
+          <td style="padding: 8px;"><u>1338</u></td>
+          <td style="padding: 8px;">222</td>
+          <td style="padding: 8px;"><u>69.4</u></td>
+          <td style="padding: 8px;">63.7</td>
+          <td style="padding: 8px;">59.1</td>
+          <td style="padding: 8px;">30.5</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Janus-Pro†</td>
+          <td style="padding: 8px;">1.5B</td>
+          <td style="padding: 8px;">86.2</td>
+          <td style="padding: 8px;"><b>1444</b></td>
+          <td style="padding: 8px;"><u>268</u></td>
+          <td style="padding: 8px;"><b>75.5</b></td>
+          <td style="padding: 8px;"><b>68.3</b></td>
+          <td style="padding: 8px;"><b>59.3</b></td>
+          <td style="padding: 8px;"><u>36.3</u></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><b style="color: #4169E1;">Harmon-0.5B</b></td>
+          <td style="padding: 8px;">0.5B</td>
+          <td style="padding: 8px;">86.5</td>
+          <td style="padding: 8px;">1148</td>
+          <td style="padding: 8px;">260</td>
+          <td style="padding: 8px;">59.8</td>
+          <td style="padding: 8px;">62.5</td>
+          <td style="padding: 8px;">56.3</td>
+          <td style="padding: 8px;">34.2</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><b style="color: #4169E1;">Harmon-1.5B</b></td>
+          <td style="padding: 8px;">1.5B</td>
+          <td style="padding: 8px;"><b>87.6</b></td>
+          <td style="padding: 8px;">1155</td>
+          <td style="padding: 8px;"><b>321</b></td>
+          <td style="padding: 8px;">65.5</td>
+          <td style="padding: 8px;"><u>67.1</u></td>
+          <td style="padding: 8px;">58.9</td>
+          <td style="padding: 8px;"><b>38.9</b></td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div style="margin-top: 20px;"></div>
+    <p style="text-align: center; margin-bottom: 1px;"><small>Table 2: Comparison with state-of-the-art models on the GenEval benchmark for text-to-image generation. 
+        Best and second best results are marked in <b>bold</b> and <u>underlined</u> respectively.</small></p>
+    <div style="overflow-x: auto;">
+      <table style="margin: 1px auto; border-collapse: collapse; text-align: center;">
+        <tr style="border-bottom: 2px solid black;">
+          <th style="padding: 8px;">Method</th>
+          <th style="padding: 8px;">Single Obj.</th>
+          <th style="padding: 8px;">Two Obj.</th>
+          <th style="padding: 8px;">Counting</th>
+          <th style="padding: 8px;">Colors</th>
+          <th style="padding: 8px;">Position</th>
+          <th style="padding: 8px;">Color Attri.</th>
+          <th style="padding: 8px;">Overall↑</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Show-o</td>
+          <td style="padding: 8px;">0.95</td>
+          <td style="padding: 8px;">0.52</td>
+          <td style="padding: 8px;">0.49</td>
+          <td style="padding: 8px;">0.82</td>
+          <td style="padding: 8px;">0.11</td>
+          <td style="padding: 8px;">0.28</td>
+          <td style="padding: 8px;">0.53</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">LWM</td>
+          <td style="padding: 8px;">0.93</td>
+          <td style="padding: 8px;">0.41</td>
+          <td style="padding: 8px;">0.46</td>
+          <td style="padding: 8px;">0.79</td>
+          <td style="padding: 8px;">0.09</td>
+          <td style="padding: 8px;">0.15</td>
+          <td style="padding: 8px;">0.47</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">ILLUME</td>
+          <td style="padding: 8px;">0.99</td>
+          <td style="padding: 8px;">0.86</td>
+          <td style="padding: 8px;">0.45</td>
+          <td style="padding: 8px;">0.71</td>
+          <td style="padding: 8px;">0.39</td>
+          <td style="padding: 8px;">0.28</td>
+          <td style="padding: 8px;">0.61</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Janus</td>
+          <td style="padding: 8px;">0.97</td>
+          <td style="padding: 8px;">0.68</td>
+          <td style="padding: 8px;">0.30</td>
+          <td style="padding: 8px;">0.84</td>
+          <td style="padding: 8px;">0.46</td>
+          <td style="padding: 8px;">0.42</td>
+          <td style="padding: 8px;">0.61</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Janus-Pro-1.5B</td>
+          <td style="padding: 8px;">0.98</td>
+          <td style="padding: 8px;">0.82</td>
+          <td style="padding: 8px;">0.51</td>
+          <td style="padding: 8px;">0.89</td>
+          <td style="padding: 8px;">0.65</td>
+          <td style="padding: 8px;">0.56</td>
+          <td style="padding: 8px;"><u>0.73</u></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><b style="color: #4169E1;">Harmon-0.5B</b></td>
+          <td style="padding: 8px;">0.99</td>
+          <td style="padding: 8px;">0.80</td>
+          <td style="padding: 8px;">0.57</td>
+          <td style="padding: 8px;">0.87</td>
+          <td style="padding: 8px;">0.55</td>
+          <td style="padding: 8px;">0.48</td>
+          <td style="padding: 8px;">0.71</td>
+        </tr>
+        <tr style="border-bottom: 2px solid black;">
+            <td style="padding: 8px;"><b style="color: #4169E1;">Harmon-1.5B</b></td>
+            <td style="padding: 8px;">0.99</td>
+          <td style="padding: 8px;">0.86</td>
+          <td style="padding: 8px;">0.66</td>
+          <td style="padding: 8px;">0.85</td>
+          <td style="padding: 8px;">0.74</td>
+          <td style="padding: 8px;">0.48</td>
+          <td style="padding: 8px;"><b>0.76</b></td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div style="margin-top: 20px;"></div>
+
+    <p style="text-align: center; margin-bottom: 1px;"><small>Table 3: Comparison with state-of-the-art models on the WISE benchmark for text-to-image generation. Best and second best results are marked in <b>bold</b> and <u>underlined</u> respectively.</small></p>
+    <div style="overflow-x: auto;">
+      <table style="margin: 1px auto; border-collapse: collapse; text-align: center;">
+        <tr style="border-bottom: 2px solid black;">
+          <th style="padding: 8px;">Method</th>
+          <th style="padding: 8px;">Cultural</th>
+          <th style="padding: 8px;">Time</th>
+          <th style="padding: 8px;">Space</th>
+          <th style="padding: 8px;">Biology</th>
+          <th style="padding: 8px;">Physics</th>
+          <th style="padding: 8px;">Chemistry</th>
+          <th style="padding: 8px;">Overall↑</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Janus</td>
+          <td style="padding: 8px;">0.16</td>
+          <td style="padding: 8px;">0.26</td>
+          <td style="padding: 8px;">0.35</td>
+          <td style="padding: 8px;">0.28</td>
+          <td style="padding: 8px;">0.30</td>
+          <td style="padding: 8px;">0.14</td>
+          <td style="padding: 8px;">0.23</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Janus-Pro-1.5B</td>
+          <td style="padding: 8px;">0.20</td>
+          <td style="padding: 8px;">0.28</td>
+          <td style="padding: 8px;">0.45</td>
+          <td style="padding: 8px;">0.24</td>
+          <td style="padding: 8px;">0.32</td>
+          <td style="padding: 8px;">0.16</td>
+          <td style="padding: 8px;">0.26</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Orthus</td>
+          <td style="padding: 8px;">0.23</td>
+          <td style="padding: 8px;">0.31</td>
+          <td style="padding: 8px;">0.38</td>
+          <td style="padding: 8px;">0.28</td>
+          <td style="padding: 8px;">0.31</td>
+          <td style="padding: 8px;">0.20</td>
+          <td style="padding: 8px;">0.27</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">VILA-U</td>
+          <td style="padding: 8px;">0.26</td>
+          <td style="padding: 8px;">0.33</td>
+          <td style="padding: 8px;">0.37</td>
+          <td style="padding: 8px;">0.35</td>
+          <td style="padding: 8px;">0.39</td>
+          <td style="padding: 8px;">0.23</td>
+          <td style="padding: 8px;">0.31</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Show-o</td>
+          <td style="padding: 8px;"><u>0.28</u></td>
+          <td style="padding: 8px;"><u>0.40</u></td>
+          <td style="padding: 8px;"><u>0.48</u></td>
+          <td style="padding: 8px;"><u>0.30</u></td>
+          <td style="padding: 8px;"><b>0.46</b></td>
+          <td style="padding: 8px;"><b>0.30</b></td>
+          <td style="padding: 8px;"><u>0.35</u></td>
+        </tr>
+        <tr style="border-bottom: 2px solid black;">
+          <td style="padding: 8px;"><b style="color: #4169E1;">Harmon-1.5B</b></td>
+          <td style="padding: 8px;"><b>0.38</b></td>
+          <td style="padding: 8px;"><b>0.48</b></td>
+          <td style="padding: 8px;"><b>0.52</b></td>
+          <td style="padding: 8px;"><b>0.37</b></td>
+          <td style="padding: 8px;"><u>0.44</u></td>
+          <td style="padding: 8px;"><u>0.29</u></td>
+          <td style="padding: 8px;"><b>0.41</b></td>
+        </tr>
+      </table>
+    </div>
+
+
+    <h2>Visualization Results</h2>
+    <div style="text-align: center;">
+      <img src="assets/examples_gen.png" alt="Text-to-Image Generation Examples" width="700px">
+      <p style="text-align: center;"><small>Figure 3: Text-to-image generation examples.</small></p>
+    </div>
+    <div style="text-align: center;">
+      <img src="assets/examples_und.png" alt="Image Understanding Examples" width="700px">
+      <p style="text-align: center;"><small>Figure 4: Image understanding examples.</small></p>
+    </div>
+
 
   <h2>Citation</h2>
   <pre>
