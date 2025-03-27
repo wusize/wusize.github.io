@@ -57,7 +57,7 @@
 
     <h2>Method</h2>
     <img src="assets/method.png" alt="Harmon Teaser Figure 1" width="800px">
-    <p style="text-align: center;"><small>Figure 2: The overall framework of <b style="color: #4169E1;">Harmon</b>. (a) Image generation is performed in the masked autoregressive manner. (b) image understanding is formulated as image-conditioned text autoregression. The MAR encoder is shared by both tasks..</small></p>
+    <p style="text-align: center;"><small>Figure 2: The overall framework of <b style="color: #4169E1;">Harmon</b>. (a) Image generation is performed in the masked autoregressive manner. (b) Image understanding is formulated as image-conditioned text autoregression. The MAR encoder is shared by both tasks..</small></p>
   
     <h2>Benchmark Results</h2>
     <p style="text-align: center; margin-bottom: 1px;"><small>Table 1: Comparison with state-of-the-art models on multimodal question-answering benchmarks. 
@@ -155,9 +155,58 @@
       </table>
     </div>
 
-
     <div style="margin-top: 20px;"></div>
-    <p style="text-align: center; margin-bottom: 1px;"><small>Table 2: Comparison with state-of-the-art models on the GenEval benchmark for text-to-image generation. 
+
+    <p style="text-align: center; margin-bottom: 1px;"><small>Table 2: Text-to-image generation on MSCOCO-30K and MJHQ-30K. FID is used as the metric for both benchmarks. 
+      Best and second best results are marked in <b>bold</b> and <u>underlined</u> respectively.</small></p>
+    <div style="overflow-x: auto;">
+      <table style="margin: 1px auto; border-collapse: collapse; text-align: center;">
+        <tr style="border-bottom: 2px solid black;">
+          <th style="padding: 8px;">Model</th>
+          <th style="padding: 8px;">MSCOCO-FID↓</th>
+          <th style="padding: 8px;">MJHQ-FID↓</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Show-o</td>
+          <td style="padding: 8px;">9.24</td>
+          <td style="padding: 8px;">15.18</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">LWM</td>
+          <td style="padding: 8px;">12.68</td>
+          <td style="padding: 8px;">17.77</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">VILA-U</td>
+          <td style="padding: 8px;">-</td>
+          <td style="padding: 8px;">7.69</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Janus</td>
+          <td style="padding: 8px;"><u>8.53</u></td>
+          <td style="padding: 8px;">10.10</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;">Janus-Pro-1.5B</td>
+          <td style="padding: 8px;">16.08</td>
+          <td style="padding: 8px;">9.53</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><b style="color: #4169E1;">Harmon-0.5B</b></td>
+          <td style="padding: 8px;">8.86</td>
+          <td style="padding: 8px;"><u>6.08</u></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><b style="color: #4169E1;">Harmon-1.5B</b></td>
+          <td style="padding: 8px;"><b>8.39</b></td>
+          <td style="padding: 8px;"><b>5.15</b></td>
+        </tr>
+      </table>
+    </div>
+    <div style="margin-top: 20px;"></div>
+
+
+    <p style="text-align: center; margin-bottom: 1px;"><small>Table 3: Comparison with state-of-the-art models on the GenEval benchmark for text-to-image generation. 
         Best and second best results are marked in <b>bold</b> and <u>underlined</u> respectively.</small></p>
     <div style="overflow-x: auto;">
       <table style="margin: 1px auto; border-collapse: collapse; text-align: center;">
@@ -247,7 +296,7 @@
 
     <div style="margin-top: 20px;"></div>
 
-    <p style="text-align: center; margin-bottom: 1px;"><small>Table 3: Comparison with state-of-the-art models on the WISE benchmark for text-to-image generation. Best and second best results are marked in <b>bold</b> and <u>underlined</u> respectively.</small></p>
+    <p style="text-align: center; margin-bottom: 1px;"><small>Table 4: Comparison with state-of-the-art models on the WISE benchmark for text-to-image generation. Best and second best results are marked in <b>bold</b> and <u>underlined</u> respectively.</small></p>
     <div style="overflow-x: auto;">
       <table style="margin: 1px auto; border-collapse: collapse; text-align: center;">
         <tr style="border-bottom: 2px solid black;">
