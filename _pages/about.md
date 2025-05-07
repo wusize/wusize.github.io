@@ -19,7 +19,7 @@ Reviewer for: TPAMI, IJCV, TIP, CVIU, ACMMM, ICCV, ICLR, ICLM, NeurIPS and CVPR.
 Recent News
 ------------------------
 
-We introduce [**Harmon** 🔥](https://wusize.github.io/projects/Harmon), a comprehensive and unified framework designed to advance both **understanding** and **generation**.
+🔥 We introduce [**Harmon**](https://wusize.github.io/projects/Harmon), a comprehensive and unified framework designed to advance both **understanding** and **generation**.
  (Mar. 2025)
 
 1 [paper](https://arxiv.org/abs/2406.05821) is accepted by CVPR2025. (Feb. 2025)
