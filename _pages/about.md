@@ -19,6 +19,8 @@ Reviewer for: TPAMI, IJCV, TIP, CVIU, ACMMM, ICCV, ICLR, ICLM, NeurIPS and CVPR.
 Recent News
 ------------------------
 
+[**Harmon**](https://wusize.github.io/projects/Harmon) has been accepted by ICCV 2025. (Jun. 2025)
+
 🔥 We introduce [**Harmon**](https://wusize.github.io/projects/Harmon), a comprehensive and unified framework designed to advance both **understanding** and **generation**.
  (Mar. 2025)
 
