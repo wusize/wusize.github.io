@@ -2,7 +2,7 @@
 title: "Harmonizing Visual Representations for Unified Multimodal Understanding and Generation"
 collection: publications
 permalink: /publication/harmon
-conf: 'IEEE Conference on Computer Vision and Pattern Recognition'
+conf: 'International Conference on Computer Vision'
 conf_shortname: 'ICCV'
 year: '2025'
 author: <strong>Size Wu</strong>, Wenwei Zhang, Lumin Xu, Sheng Jin, Zhonghua Wu, Qingyi Tao, Wentao Liu, Wei Li and Chen Change Loy
